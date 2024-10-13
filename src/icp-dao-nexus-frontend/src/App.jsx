@@ -1,31 +1,21 @@
-import { useState } from 'react';
-import { icp_dao_nexus_backend } from 'declarations/icp-dao-nexus-backend';
+import React from 'react';
+import { useAuth } from './contexts/AuthContext';
+import Login from './components/Login';
+import Register from './components/Register';
+import Dashboard from './components/Dashboard';
 
-function App() {
-  const [greeting, setGreeting] = useState('');
+const App = () => {
+  const { isAuthenticated, userProfile } = useAuth();
 
-  function handleSubmit(event) {
-    event.preventDefault();
-    const name = event.target.elements.name.value;
-    icp_dao_nexus_backend.greet(name).then((greeting) => {
-      setGreeting(greeting);
-    });
-    return false;
+  if (!isAuthenticated) {
+    return <Login />;
   }
 
-  return (
-    <main>
-      <img src="/logo2.svg" alt="DFINITY logo" />
-      <br />
-      <br />
-      <form action="#" onSubmit={handleSubmit}>
-        <label htmlFor="name">Enter your name: &nbsp;</label>
-        <input id="name" alt="Name" type="text" />
-        <button type="submit">Click Me!</button>
-      </form>
-      <section id="greeting">{greeting}</section>
-    </main>
-  );
-}
+  if (!userProfile) {
+    return <Register />;
+  }
+
+  return <Dashboard />;
+};
 
 export default App;
