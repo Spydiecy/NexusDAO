@@ -1,0 +1,26 @@
+{
+  "canisters": {
+    "icp-dao-nexus-backend": {
+      "main": "src/icp-dao-nexus-backend/main.mo",
+      "type": "motoko"
+    },
+    "icp-dao-nexus-frontend": {
+      "dependencies": [
+        "icp-dao-nexus-backend"
+      ],
+      "source": [
+        "src/icp-dao-nexus-frontend/dist"
+      ],
+      "type": "assets",
+      "workspace": "icp-dao-nexus-frontend"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "output_env_file": ".env",
+  "version": 1
+}
