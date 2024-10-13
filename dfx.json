@@ -1,0 +1,26 @@
+{
+  "canisters": {
+    "NexusDAO_backend": {
+      "main": "src/NexusDAO_backend/main.mo",
+      "type": "motoko"
+    },
+    "NexusDAO_frontend": {
+      "dependencies": [
+        "NexusDAO_backend"
+      ],
+      "source": [
+        "src/NexusDAO_frontend/dist"
+      ],
+      "type": "assets",
+      "workspace": "NexusDAO_frontend"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "output_env_file": ".env",
+  "version": 1
+}
